@@ -1,11 +1,12 @@
 {
-  "name": "tailwindcss-boilerplate",
+  "name": "turismocardoza",
   "version": "1.0.0",
   "description": "A simple Tailwind CSS boilerplate",
   "scripts": {
-    "dev": "tailwindcss build tailwind.css -o public/css/tailwind.output.css",
-    "build": "cross-env NODE_ENV=production postcss tailwind.css -o public/css/tailwind.output.css",
-    "watch": "cross-env postcss tailwind.css -o public/css/tailwind.output.css --watch"
+    "dev": "nodemon ./src/app.js",
+    "tailwind_dev": "tailwindcss build src/tailwind.css -o src/public/css/tailwind.output.css",
+    "tailwind_build": "cross-env NODE_ENV=production postcss src/tailwind.css -o src/public/css/tailwind.output.css",
+    "tailwind_watch": "cross-env postcss src/tailwind.css -o src/public/css/tailwind.output.css --watch"
   },
   "keywords": [
     "tailwind",
@@ -20,12 +21,24 @@
   "license": "MIT",
   "dependencies": {
     "autoprefixer": "9.8.4",
+    "body-parser": "^1.19.0",
     "cssnano": "4.1.10",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
     "postcss-cli": "7.1.1",
     "tailwindcss": "1.4.6"
   },
   "devDependencies": {
     "@tailwindcss/custom-forms": "0.2.1",
     "cross-env": "7.0.2"
-  }
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vicentematus/viajescardoza.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vicentematus/viajescardoza/issues"
+  },
+  "homepage": "https://github.com/vicentematus/viajescardoza#readme"
 }
