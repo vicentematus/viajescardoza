@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Crear Paquete Nuevo</h1>
+
+    <form action="/admin/new/paquete"  method="POST">
+    
+        <label for="nombre">Nombre</label>
+        <br>
+        <input type="text" name="nombre" id="nombre">
+        <br>
+        <br>
+        <label for="desc">Descripción</label>
+        <br>
+        <textarea name="desc" id="desc" cols="20" rows="4"></textarea>
+        <br>
+        <br>
+        <label for="precio">Precio</label>
+        <br>
+        <input type="number" name="precio" id="precio">
+        <br>
+        <br>
+        <label for="categoria">Categoria</label>
+        <br>
+        <input type="text" name="categoria" id="categoria">
+        <br><br>
+        <label for="subCategoria">subCategoria</label>
+        <br>
+        <input type="text" name="subcat" id="subCategoria">
+        <br><br>
+        <label for="fecha">Fecha de viaje</label>
+        <br>
+        <input type="date" name="fecha" id="fecha">
+        <br><br>
+        <label for="linkPago">Link de Pago</label>
+        <br>
+        <input type="text" name="linkPago" id="linkPago">
+
+
+        <br><br>
+        <button type="submit">Crear Paquete</button>
+    </form>
+</body>
+</html>
