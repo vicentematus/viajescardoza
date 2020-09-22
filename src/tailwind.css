@@ -29,7 +29,7 @@
 }
 
 .paquetes__imagen {
-  @apply w-full rounded-l-md h-full;
+  @apply w-full rounded-l-md h-full object-cover;
 }
 
 .paises-card {
@@ -46,6 +46,14 @@
 
 .cta__paquetes {
   @apply inline-flex text-white font-semibold bg-green-500 rounded-lg items-center px-4 py-2 mt-5;
+}
+
+.paqueteForm__title {
+  @apply text-lg font-semibold text-gray-800;
+}
+
+.paqueteForm__input {
+  @apply border-2 border-gray-300 bg-white rounded-lg p-2 w-full;
 }
 
 @screen md {
