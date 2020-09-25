@@ -1,0 +1,171 @@
+<%- include ('../partials/header.ejs') -%>
+
+
+<div class="max-w-md px-4 mx-auto">
+    <div>
+      <a href="/admin/home">
+        <p class="font-semibold text-blue-600">Volver al panel principal</p>
+      </a>
+    </div>
+    <h1 class="text-4xl leading-none font-semibold mt-4">Creación del paquete</h1>
+    <p class="text-gray-600 mt-2">
+      Rellene los campos existentes para poder crear el paquete turistico.
+    </p>
+  </div>
+  <form action="/admin/new/paquete" class="mt-4" method="POST">
+    <div class="max-w-md flex-col flex px-4 w-full justify-center mx-auto">
+      <label class="paqueteForm__title" for="nombre">Nombre</label>
+  
+      <input
+        type="text"
+        class="paqueteForm__input p-2 placeholder-gray-400 focus:border-indigo-400 focus:outline-none"
+        name="nombre"
+        id="nombre"
+      />
+      <p class="text-gray-600 mb-4">
+        Ingrese el nombre del paquete turistico. Ejemplo: Cuba, La Habana
+      </p>
+      <label for="desc" class="paqueteForm__title">Descripción</label>
+  
+      <textarea
+        name="desc"
+        class="paqueteForm__input placeholder-gray-400 focus:border-indigo-400 focus:outline-none"
+        id="desc"
+        cols="20"
+        rows="12"
+      ></textarea>
+      <p class="text-gray-600 mb-4">
+        Ingrese la descripción del paquete, como los detalles del viaje.
+      </p>
+      <label for="precio" class="paqueteForm__title">Precio</label>
+  
+      <div class="relative">
+        <div
+          class="absolute flex border border-transparent left-0 top-0 h-full w-10"
+        >
+          <div
+            class="flex items-center justify-center rounded-tl rounded-bl z-10 bg-gray-100 text-gray-600 text-lg h-full w-full"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+  
+        <input
+          type="number"
+          name="precio"
+          class="paqueteForm__input relative border rounded placeholder-gray-400 focus:border-indigo-400 focus:outline-none py-2 pr-2 pl-12"
+          id="precio"
+        />
+      </div>
+      <p class="text-gray-600 mb-4">En pesos chilenos (CLP).</p>
+      <label for="categoria" class="paqueteForm__title">Categoria</label>
+  
+      <input
+        type="text"
+        class="paqueteForm__input placeholder-gray-400 focus:border-indigo-400 focus:outline-none mb-4"
+        name="categoria"
+        id="categoria"
+      />
+  
+      <label for="subCategoria" class="paqueteForm__title">Sub Categoria</label>
+  
+      <input
+        type="text"
+        class="paqueteForm__input placeholder-gray-400 focus:border-indigo-400 focus:outline-none mb-4"
+        name="subcat"
+        id="subCategoria"
+      />
+  
+      <label for="fecha" class="paqueteForm__title">Fecha de viaje</label>
+      <div class="relative">
+        <div
+          class="absolute flex border border-transparent left-0 top-0 h-full w-10"
+        >
+          <div
+            class="flex items-center justify-center rounded-tl rounded-bl z-10 bg-gray-100 text-gray-600 text-lg h-full w-full"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+  
+        <input
+          type="date"
+          name="fecha"
+          id="fecha"
+          class="paqueteForm__input relative border rounded placeholder-gray-400 focus:border-indigo-400 focus:outline-none py-2 pr-2 pl-12"
+        />
+      </div>
+      <p class="text-gray-600 mb-4">Ingrese la fecha de salida del paquete.</p>
+  
+      <label for="linkPago" class="paqueteForm__title">Link de Pago</label>
+  
+      <div class="relative">
+        <div
+          class="absolute flex border border-transparent left-0 top-0 h-full w-10"
+        >
+          <div
+            class="flex items-center justify-center rounded-tl rounded-bl z-10 bg-gray-100 text-gray-600 text-lg h-full w-full"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+              ></path>
+            </svg>
+          </div>
+        </div>
+        <input
+          type="text"
+          name="linkPago"
+          id="linkPago"
+          class="paqueteForm__input relative border rounded placeholder-gray-400 focus:border-indigo-400 focus:outline-none py-2 pr-2 pl-12"
+        />
+      </div>
+      <p class="text-gray-600 mb-4">
+        Link de pago de webpay. Comienza con webpay.cl
+      </p>
+  
+      <button
+        type="submit"
+        class="bg-blue-500 rounded-md py-2 mt-4 text-white font-semibold tracking-wide uppercase mb-16"
+      >
+        Crear Paquete
+      </button>
+    </div>
+  </form>
+
+<%- include ('../partials/footer.ejs') -%>  

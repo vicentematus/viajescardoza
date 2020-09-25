@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 
 //Router Files
 const adminRoutes = require('./routes/admin');
+const paqueteRoutes = require('./routes/paquete');
 
 //App Config
 const app = express();
@@ -23,6 +24,7 @@ mongoose.connect('mongodb://localhost/ViajesCardoza', {useNewUrlParser: true, us
 
 //Routes
 app.use('/admin', adminRoutes);
+app.use('/paquete', paqueteRoutes);
 
 app.get('/', (req,res) =>{
     res.send('Viajes Cardoza');

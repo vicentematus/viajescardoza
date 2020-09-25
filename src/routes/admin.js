@@ -26,7 +26,7 @@ router.get('/home', async (req, res) =>{
 });
 
 router.get('/new/paquete', (req, res) =>{
-    res.render('admin/newPaquete');
+    res.render('paquetes/new');
 });
 
 router.post('/new/paquete', (req, res) =>{
