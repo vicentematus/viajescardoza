@@ -11,5 +11,11 @@
             <a href="/admin/new/paquete">Nuevo Paquete</a>
         </div>
     </div>
+
+    <% paquetes.forEach( a =>{ %>
+        <h1><%= a.nombre %></h1>
+        <h3><%= a.desc %></h3>
+        <a href="/paquetes/<%= a._id %>">Ver Mas</a>
+    <% });%>
 </body>
 </html>

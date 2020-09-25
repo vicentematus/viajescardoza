@@ -14,8 +14,15 @@ router.post('/login', (req, res) =>{
     res.redirect('home');
 });
 
-router.get('/home', (req, res) =>{
-    res.render('admin/home');
+router.get('/home', async (req, res) =>{
+
+    const paqs = await Paquete.find(err=>{
+        if(err){
+            res.send(err);
+        }
+    });
+
+    res.render('admin/home', {paquetes: paqs});
 });
 
 router.get('/new/paquete', (req, res) =>{
