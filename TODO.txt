@@ -1,0 +1,37 @@
+Entrega de CRUD para paquetes turisticos.
+
+MISC TODO LIST:
+    [x]Change Favicon
+    [x]Configure Helmet
+    []
+
+BACKEND TODO LIST:
+ [] Create:
+ 
+    [x] Crear Modelos
+    [x] Ruta Post
+    [x] crear nueva entrada en la coleccion de paquetes
+    [x]  Redireccionar a admin homepage
+    
+    Subir Imagenes:
+        [x]Agregar y configurar Multer 
+        [x]Cambiar formato del formulario
+        [x]Guardar la imagen con multer 
+        [x]Guardar direccion de la imagen en el modelo del paquete
+        [x]Guardar paquete
+ 
+ [] Read:
+    [X] Read All (Homepage):
+        [x] Ruta get
+        [x] Pasar paqutes al front-end
+        [x]  mostrar todos los paquetes
+        [X] links a los paquetes por id
+    [] Read One:
+        [] Ruta get con parametro id
+        [] pasar al front-end el paquete de mismo id
+
+ [] Update:
+    []
+
+ [] Destroy:
+    []

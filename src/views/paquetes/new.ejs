@@ -12,7 +12,7 @@
       Rellene los campos existentes para poder crear el paquete turistico.
     </p>
   </div>
-  <form action="/admin/new/paquete" class="mt-4" method="POST">
+  <form action="/admin/new/paquete" class="mt-4" method="POST"  enctype="multipart/form-data">
     <div class="max-w-md flex-col flex px-4 w-full justify-center mx-auto">
       <label class="paqueteForm__title" for="nombre">Nombre</label>
   
@@ -25,6 +25,11 @@
       <p class="text-gray-600 mb-4">
         Ingrese el nombre del paquete turistico. Ejemplo: Cuba, La Habana
       </p>
+
+      <label for="img">Imagen</label>
+      <br>
+      <input type="file" name="img" id="img">
+      <br>
       <label for="desc" class="paqueteForm__title">Descripción</label>
   
       <textarea

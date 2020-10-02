@@ -4,6 +4,7 @@ const {Schema} = mongoose;
 const paqueteSchema = new Schema({
     nombre: String,
     desc: String,
+    img: String,
     precio: Number,
     duracion: Number,
     categoria: String,
