@@ -1,4 +1,4 @@
-<%- include ('./partials/header.ejs') -%>
+<%- include ('./partials/header') -%>
 
 <main>
 	<section
@@ -54,7 +54,7 @@
 			<div class="max-w-xl p-2 w-full h-full">
 				<div
 					style="
-						background-image: url(./images/viajes-destacados/imagen-ejemplo-1.png);
+						background-image: url(/public/images/viajes-destacados/imagen-ejemplo-1.png);
 						background-repeat: no-repeat;
 						background-size: cover;
 					"
@@ -113,7 +113,7 @@
                         <section class="paquetes__card">
                             <div>
 								<% if (p.img && p.img != ''){ %>
-									<img src="/public + <%=String(p.img).split("public")[1]%>" alt="" class="paquetes__imagen"/>
+									<img src="/public/<%=String(p.img).split("public")[1]%>" alt="" class="paquetes__imagen"/>
 								<% } else { %>
 									
 								<% } %>
@@ -168,7 +168,7 @@
 				<section class="grid md:grid-cols-3 gap-4 p-4 sm:p-0">
 					<div
 						class="paises-card"
-						style="background-image: url(./images/paises/chile.png)"
+						style="background-image: url(/public/images/paises/chile.png)"
 					>
 						<div
 							class="absolute inset-0 w-100 h-100 bg-black opacity-25 z-10 rounded-lg"
@@ -178,7 +178,7 @@
 
 					<div
 						class="paises-card"
-						style="background-image: url(./images/paises/chile.png)"
+						style="background-image: url(/public/images/paises/chile.png)"
 					>
 						<div
 							class="absolute inset-0 w-100 h-100 bg-black opacity-25 z-10 rounded-lg"
@@ -188,7 +188,7 @@
 
 					<div
 						class="paises-card"
-						style="background-image: url(./images/paises/chile.png)"
+						style="background-image: url(/public/images/paises/chile.png)"
 					>
 						<div
 							class="absolute inset-0 w-100 h-100 bg-black opacity-25 z-10 rounded-lg"
@@ -282,4 +282,4 @@
 	</section>
 </main>
 
-<%- include ('./partials/footer.ejs') -%>
+<%- include ('./partials/footer') -%>
