@@ -10,7 +10,7 @@
 			<div class="max-w-xl w-full h-full p-2">
 				<div
 					style="
-						background-image: url(./images/viajes-destacados/imagen-ejemplo-1.png);
+						background-image: url(/public/images/viajes-destacados/imagen-ejemplo-1.png);
 						background-repeat: no-repeat;
 						background-size: cover;
 					"
@@ -113,7 +113,7 @@
                         <section class="paquetes__card">
                             <div>
 								<% if (p.img && p.img != ''){ %>
-									<img src="<%=String(p.img).split("public")[1]%>" alt="" class="paquetes__imagen"/>
+									<img src="/public + <%=String(p.img).split("public")[1]%>" alt="" class="paquetes__imagen"/>
 								<% } else { %>
 									
 								<% } %>
