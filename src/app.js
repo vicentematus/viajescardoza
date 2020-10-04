@@ -2,7 +2,6 @@ const express   = require('express');
 const path      = require('path');
 const mongoose  = require('mongoose');
 const bodyParser= require('body-parser');
-const helmet    = require('helmet');
 const engine       = require('ejs-mate');
 
 //Models
@@ -25,7 +24,6 @@ app.use(express.urlencoded({extended: false}));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.use(helmet());
 app.use(express.static(__dirname + '/public'));
 
 //Base de Datos
