@@ -3,6 +3,7 @@ const path      = require('path');
 const mongoose  = require('mongoose');
 const bodyParser= require('body-parser');
 const helmet    = require('helmet');
+const engine       = require('ejs-mate');
 
 //Models
 const Paquete = require('./models/Paquete');
@@ -15,17 +16,21 @@ const paqueteRoutes = require('./routes/paquete');
 const app = express();
 const port = 80;
 
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'))
+app.engine('ejs', engine);
 app.set('view engine', 'ejs');
 
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({extended: false}));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use(helmet());
-app.use('/public', express.static(path.join(__dirname, './public')));
 
 //Base de Datos
-mongoose.connect('mongodb://localhost/ViajesCardoza', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://localhost:27017/ViajesCardoza', {useNewUrlParser: true, useUnifiedTopology: true})
+        .then(db => console.log('DB is connected'))
+        .catch(err => console.log(err))
 
 //Routes
 app.use('/admin', adminRoutes);
@@ -43,5 +48,5 @@ app.get('/', (req,res) =>{
 });
 
 app.listen(port, () =>{
-    console.log('Bienvenido a Tursimo Cardoza!');
+    console.log('Bienvenido a Tursimo Cardoza!, la app esta corriendo en el puerto', port);
 });
