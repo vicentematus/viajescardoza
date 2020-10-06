@@ -16,10 +16,9 @@ const app = express();
 const port = 80;
 
 app.set('views', path.join(__dirname, 'views'))
-app.engine('ejs', engine);
 app.set('view engine', 'ejs');
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 app.use(express.urlencoded({extended: false}));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -41,7 +40,7 @@ app.get('/', (req,res) =>{
         console.log(err);
         res.send(err);
       } else {
-        res.render('./homepage', {paquetes:paquetes});
+        res.render('homepage', {paquetes:paquetes});
       }
     });
 });
