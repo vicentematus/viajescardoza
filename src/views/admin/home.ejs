@@ -1,4 +1,4 @@
-<%- include ('../partials/header.ejs') -%>
+<%- include ('../partials/header') -%>
 <div class="max-w-screen-xl mx-auto px-4">
 	<h1 class="text-3xl leading-none font-bold">Panel Administrador</h1>
 	<p class="leading-normal mt-4 md:text-xl">
@@ -33,11 +33,23 @@
 		<% paquetes.forEach((paquete, index)=>{ %>
 			<section class="paquetes__card">
 				<div>
-					<img
-						src="/public/images/viajes-destacados/viaje-colombia.png"
+
+					<% if (paquete.img && paquete.img != ''){ %>
+						<img
+						src="<%=String(paquete.img).split('public')[1]%>"
+						alt="imagen del paquete"
+						class="paquetes__imagen"
+						/>
+						
+					<% } else { %>
+						<img
+						src="/images/viajes-destacados/viaje-colombia.png"
 						alt=""
 						class="paquetes__imagen"
 					/>
+					<% } %>
+
+					
 				</div>
 				<div class="paquetes__descripcion">
 					<div class="px-2 md:px-4 py-4">
@@ -138,4 +150,4 @@
 		<% }); %>
 	</div>
 </div>
-<%- include ('../partials/footer.ejs') -%>
+<%- include ('../partials/footer') -%>
