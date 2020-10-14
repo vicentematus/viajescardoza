@@ -9,7 +9,7 @@ router.get('/:idPaquete', (req, res) =>{
         if(err){
             res.send('Paquete no encontrado');
         }else{
-            res.render('paquetes/info', {paquete:p});
+            res.json(p);
         }
     });
 });

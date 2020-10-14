@@ -2,7 +2,6 @@ const express   = require('express');
 const path      = require('path');
 const mongoose  = require('mongoose');
 const bodyParser= require('body-parser');
-const engine       = require('ejs-mate');
 
 //Models
 const Paquete = require('./models/Paquete');
@@ -18,12 +17,10 @@ const port = 80;
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs');
 
-app.use(express.static('public'));
 app.use(express.urlencoded({extended: false}));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.use(express.static(__dirname + '/public'));
 
 //Base de Datos
 mongoose.connect('mongodb://localhost:27017/ViajesCardoza', {useNewUrlParser: true, useUnifiedTopology: true})
@@ -40,7 +37,7 @@ app.get('/', (req,res) =>{
         console.log(err);
         res.send(err);
       } else {
-        res.render('homepage', {paquetes:paquetes});
+        res.json(paquetes);
       }
     });
 });

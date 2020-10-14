@@ -11,7 +11,7 @@ module.exports = {
       height: {
         viajePortada: "37.5rem",
         halfScreen: "50vh",
-      },
+      }
     },
     colors,
   },
