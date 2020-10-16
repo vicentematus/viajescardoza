@@ -6,7 +6,7 @@
 		modificar, borrar y destacar paquetes.
 	</p>
 
-	<a href="/admin/new/paquete">
+	<a href="/paquete/new">
 		<div class="cta__paquetes bg-blue-500">
 			<svg
 				class="w-6 h-6 mr-2"
@@ -60,7 +60,7 @@
 							<p class="paquetes__subtitulo">Precio por Persona</p>
 							<h4 class="paquetes__precio"><%=paquete.precio%></h4>
 							<div>
-								<a href="#" class="">
+								<a href='/admin/editar/paquete/<%=paquete._id%>' class="">
 									<div class="cta__paquetes bg-blue-500">
 										<svg
 											class="w-6 h-6 mr-2"

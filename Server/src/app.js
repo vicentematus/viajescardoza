@@ -2,6 +2,7 @@ const express   = require('express');
 const path      = require('path');
 const mongoose  = require('mongoose');
 const bodyParser= require('body-parser');
+const methodOverride = require('method-override');
 
 //Models
 const Paquete = require('./models/Paquete');
@@ -20,7 +21,9 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: false}));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+app.use(methodOverride('_method'));
 
+app.use(express.static('./src/public'));
 
 //Base de Datos
 mongoose.connect('mongodb://localhost:27017/ViajesCardoza', {useNewUrlParser: true, useUnifiedTopology: true})

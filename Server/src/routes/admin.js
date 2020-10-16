@@ -2,20 +2,10 @@ const express = require("express");
 const router = express.Router();
 
 const path = require("path");
-const multer = require("multer");
-
-var storage = multer.diskStorage({
-	destination: (req, file, cb) => {
-		cb(null, './src/public/uploads/');
-	},
-	filename: function (req, file, cb) {
-		cb(null, file.fieldname + "-" + Date.now().toString().replace(/:/g, '-'));
-	},
-});
-var upload = multer({ storage: storage });
 
 //Models
 const Paquete = require("../models/Paquete");
+const { route } = require("./paquete");
 
 router.get("/login", (req, res) => {
 	res.render("admin/login");
@@ -37,25 +27,15 @@ router.get("/home", async (req, res) => {
 	res.render("admin/home", { paquetes: paqs });
 });
 
-router.get("/new/paquete", (req, res) => {
-	res.render("paquetes/new");
-});
 
-router.post("/new/paquete", upload.single("img"), (req, res) => {
-	const newPaquete = new Paquete({
-		nombre: req.body.nombre,
-		desc: req.body.desc,
-        precio: req.body.precio,
-        img: req.file.path,
-		categoria: req.body.categoria,
-		subcat: req.body.subCategoria,
-		fecha: req.body.fecha,
-		linkPago: req.body.linkPago,
+router.get('/editar/paquete/:idPaquete', (req, res) =>{
+	Paquete.findById(req.params.idPaquete, (err, paq) =>{
+		if(err){
+			res.send('Paquete no encontrado');
+		} else {
+			res.render('paquetes/editar', {paquete: paq});
+		}
 	});
-
-	newPaquete.save();
-
-	res.redirect("/admin/home");
 });
 
 module.exports = router;
