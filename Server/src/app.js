@@ -24,6 +24,13 @@ app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 
 app.use(express.static('./src/public'));
+app.get('uploads/images/*', (req, res)=>{
+  var imagePath = req.url,
+      url = 'http://ubuntubox.dev' + imagePath;
+
+  request(url).pipe(res);
+});
+
 
 //Base de Datos
 mongoose.connect('mongodb://localhost:27017/ViajesCardoza', {useNewUrlParser: true, useUnifiedTopology: true})
