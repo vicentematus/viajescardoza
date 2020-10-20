@@ -73,7 +73,7 @@ function GenerateHomepageView(infoPaquetes){
         paqueteHTML.classList.add('paquetes__card')
         paqueteHTML.innerHTML = `<div>
         <img
-        src="${String(APIServer).split('.com/')[1]}/${String(paquete.img).split('public/')[1]}"
+        src="${APIServer}/${String(paquete.img).split('public/')[1]}"
         alt=""
         class="paquetes__imagen"
         />
