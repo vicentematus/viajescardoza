@@ -3,6 +3,7 @@ const path      = require('path');
 const mongoose  = require('mongoose');
 const bodyParser= require('body-parser');
 const methodOverride = require('method-override');
+const cors      = require('cors');
 
 //Models
 const Paquete = require('./models/Paquete');
@@ -22,14 +23,9 @@ app.use(express.urlencoded({extended: false}));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
+app.use(cors());
 
 app.use(express.static('./src/public'));
-app.get('uploads/images/*', (req, res)=>{
-  var imagePath = req.url,
-      url = 'http://ubuntubox.dev' + imagePath;
-
-  request(url).pipe(res);
-});
 
 
 //Base de Datos

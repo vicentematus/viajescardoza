@@ -4,11 +4,14 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-    entry: './src/index.js',
+    entry:{
+        home: './src/homepage/index.js',
+        paquete: './src/paquete/paquete.js'
+    },
     output: {
       path: path.resolve(__dirname, './build'),
       publicPath: '/',
-      filename: 'index.js'  
+      filename: '[name].js'  
     },
 
     module:{
@@ -50,9 +53,15 @@ module.exports = {
             chunkFilename: 'styles.css'
         }),
         new HTMLWebpackPlugin({
-            template: "./src/boilerplate.html",
+            chunks: ['home'],
+            template: "./src/homepage/boilerplate.html",
             filename: './index.html'
-        })
+        }),
+        new HTMLWebpackPlugin({
+            chunks: ['paquete'],
+            template: "./src/paquete/boilerplate.html",
+            filename: './paquete.html'
+        }),
     ],
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),

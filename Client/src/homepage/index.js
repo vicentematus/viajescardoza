@@ -43,12 +43,12 @@
 
 */
 //import assets
-import('./styles.css');
+import('../styles.css');
 
 //import libraries
 const axios = require('axios').default;
 
-const APIServer = 'https://cors-anywhere.herokuapp.com/http://167.172.210.20'
+const APIServer = 'http://admin.turismocardoza.cl:3000/'
 
 let data;
 
