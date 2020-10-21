@@ -48,7 +48,7 @@ import('../styles.css');
 //import libraries
 const axios = require('axios').default;
 
-const APIServer = 'http://admin.turismocardoza.cl:3000/'
+const APIServer = 'https://cors-anywhere.herokuapp.com/https://administrador.turismocardoza.cl/'
 
 let data;
 
@@ -73,7 +73,7 @@ function GenerateHomepageView(infoPaquetes){
         paqueteHTML.classList.add('paquetes__card')
         paqueteHTML.innerHTML = `<div>
         <img
-        src="${APIServer}/${String(paquete.img).split('public/')[1]}"
+        src="${String(APIServer).split('.com/')[1]}${String(paquete.img).split('public/')[1]}"
         alt=""
         class="paquetes__imagen"
         />

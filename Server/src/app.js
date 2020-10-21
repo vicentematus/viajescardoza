@@ -23,7 +23,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
-app.use(cors());
+app.use(cors({ origin: true, credentials: true }));
 
 app.use(express.static('./src/public'));
 
