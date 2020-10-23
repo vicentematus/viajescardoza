@@ -58,8 +58,8 @@ module.exports = {
             filename: './index.html'
         }),
         new HTMLWebpackPlugin({
+            template: "./src/paquete/paquete.html",
             chunks: ['paquete'],
-            template: "./src/paquete/boilerplate.html",
             filename: './paquete.html'
         }),
     ],
