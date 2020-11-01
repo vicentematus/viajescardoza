@@ -1,17 +1,16 @@
 //Configuracion de Webpack
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
+const MiniCSS = require('mini-css-extract-plugin');
 
 module.exports = {
     entry:{
         home: './src/homepage/index.js',
-        paquete: './src/paquete/paquete.js'
+        paquete: './src/paquete/paquete.js',
+        calendario: './src/calendario/calendario.js'
     },
-    output: {
-      path: path.resolve(__dirname, './build'),
-      publicPath: '/',
-      filename: '[name].js'  
+    resolve:{
+        extensions:['.mjs', '.js']
     },
 
     module:{
@@ -29,8 +28,9 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    MiniCSSExtractPlugin.loader,
-                    "css-loader", "postcss-loader"
+                    MiniCSS.loader,
+                    'css-loader',
+                    "postcss-loader"
                 ]
             },
             {
@@ -48,9 +48,8 @@ module.exports = {
         ]
     },
     plugins:[
-        new MiniCSSExtractPlugin({
-            filename: 'styles.css',
-            chunkFilename: 'styles.css'
+        new MiniCSS({
+            filename: 'style.css'
         }),
         new HTMLWebpackPlugin({
             chunks: ['home'],
@@ -62,7 +61,18 @@ module.exports = {
             chunks: ['paquete'],
             filename: './paquete.html'
         }),
+        new HTMLWebpackPlugin({
+            template: "./src/Calendario/calendario.html",
+            chunks: ['calendario'],
+            filename: './calendario.html'
+        })
     ],
+
+    output: {
+        path: path.resolve(__dirname, './build'),
+        publicPath: '/',
+        filename: '[name].bundle.js'  
+      },
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
         compress: true,

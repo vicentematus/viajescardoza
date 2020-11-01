@@ -1,10 +1,35 @@
 <%- include ('../partials/header.ejs') -%>
+
 <div class="max-w-md px-4 mx-auto">
-    <div>
-      <a href="/admin/home">
-        <p class="font-semibold text-blue-600">Volver al panel principal</p>
-      </a>
-    </div>
+  <div>
+    <a href="/admin/home">
+      <p class="font-semibold text-blue-600">Volver al panel principal</p>
+    </a>
+  </div>
+  <h1 class="text-4xl leading-none font-semibold mt-4">Actualizar Imagenes</h1>
+  <br>
+  
+  <p class="text-gray-600 mb-4">Thumbnail</p>
+  <img src="<%=String(paquete.img).split('public')[1]%>" alt="">
+  <br>
+  <form action="/paquete/<%=paquete._id%>/newThumbnail?_method=PUT"  method="POST"  enctype="multipart/form-data">
+    <input type="file" name="img" id="img">
+    <br>
+    <button type="submit">Actualizar Thumbnail</button>
+  </form>
+  <br>
+  <p class="text-gray-600 mb-4">Banner</p>
+  <img src="<%=String(paquete.imgBanner).split('public')[1]%>" alt="">
+  <br>
+  <form action="/paquete/<%=paquete._id%>/newBanner?_method=PUT"  method="POST"  enctype="multipart/form-data">
+    <input type="file" name="imgBanner" id="imgBanner">
+    <br>
+    <button type="submit">Actualizar Thumbnail</button>
+  </form>
+</div>
+
+<div class="max-w-md px-4 mx-auto">
+    
     <h1 class="text-4xl leading-none font-semibold mt-4">Editar Paquete: <%=paquete.nombre%></h1>
     <p class="text-gray-600 mt-2">
       Rellene los campos existentes para poder crear el paquete turistico.
@@ -25,14 +50,6 @@
         Ingrese el nombre del paquete turistico. Ejemplo: Cuba, La Habana
       </p>
 
-      <label
-      class = 'paqueteForm__title'
-      for="img">
-        Imagen (si no desea cambiar la imagen omita este paso)
-     </label>
-      <br>
-      <input type="file" name="img" id="img">
-      <br>
       <label for="desc" class="paqueteForm__title">Descripción</label>
   
       <textarea
@@ -100,7 +117,7 @@
         value="<%=paquete.subcat%>"
       />
   
-      <label for="fecha" class="paqueteForm__title">Fecha de viaje</label>
+      <label for="fecha" class="paqueteForm__title">Fecha de Salida</label>
       <div class="relative">
         <div
           class="absolute flex border border-transparent left-0 top-0 h-full w-10"
@@ -124,17 +141,48 @@
             </svg>
           </div>
         </div>
-  
         <input
+        
+          value="<%=paquete.fechaSalida.toISOString().split('T')[0]%>"
           type="date"
-          name="fecha"
-          id="fecha"
+          name="fechaSalida"
+          id="fechaSalida"
           class="paqueteForm__input relative border rounded placeholder-gray-400 focus:border-indigo-400 focus:outline-none py-2 pr-2 pl-12"
-          value="<%=paquete.fecha.toISOString().substr(0,10)%>"
         />
       </div>
-      <p class="text-gray-600 mb-4">Ingrese la fecha de salida del paquete.</p>
-  
+      
+      <label for="fecha" class="paqueteForm__title">Fecha de Llegada</label>
+      <div class="relative">
+        <div
+          class="absolute flex border border-transparent left-0 top-0 h-full w-10"
+        >
+          <div
+            class="flex items-center justify-center rounded-tl rounded-bl z-10 bg-gray-100 text-gray-600 text-lg h-full w-full"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+        <input
+        value="<%=paquete.fechaLlegada.toISOString().split('T')[0]%>"
+          type="date"
+          name="fechaLlegada"
+          id="fechaLlegada"
+          class="paqueteForm__input relative border rounded placeholder-gray-400 focus:border-indigo-400 focus:outline-none py-2 pr-2 pl-12"
+        />
+      </div>
       <label for="linkPago" class="paqueteForm__title">Link de Pago</label>
   
       <div class="relative">

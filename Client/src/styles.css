@@ -84,6 +84,20 @@
   background-image: url(public/images/paises/chile.png)
 }
 
+#calendario-container{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 5px;
+  top: 200px;
+  overflow: hidden;
+
+  margin: 2rem;
+  padding: 0.25rem;
+
+  background-color: white;
+}
+
 @screen md {
   .paquetes__card {
     @apply flex max-w-xl;

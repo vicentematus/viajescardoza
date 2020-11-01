@@ -4,17 +4,18 @@ const {Schema} = mongoose;
 const paqueteSchema = new Schema({
     nombre: String,
     desc: String,
-    img: String,
     precio: Number,
-    duracion: Number,
     categoria: String,
     subcat: String,
-    fecha: Date,
-    fotos: [],
+    fechaSalida: Date,
+    fechaLlegada: Date,
     linkPago: String,
 
-    destacado: Boolean,
-    megaDestacado: Boolean
+    oferta: Boolean,
+    favorito: Boolean,
+
+    img: String,
+    imgBanner: String
 });
 
 module.exports = mongoose.model('paquete', paqueteSchema);
