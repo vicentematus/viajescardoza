@@ -118,7 +118,7 @@ router.put('/:idPaquete/favorito', (req, res) =>{
     Paquete.findById(req.params.idPaquete, (err, paqueteInfo) =>{
 
         const changeFavoritoState = {
-            oferta: !paqueteInfo.favorito,
+            favorito: !paqueteInfo.favorito,
         }
     
         Paquete.findOneAndUpdate(req.params.idPaquete, changeFavoritoState)
