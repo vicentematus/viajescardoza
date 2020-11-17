@@ -85,59 +85,50 @@
     }
 } */
 
-
 //import assets
-
-import Axios from "axios";
+import "../styles.css";
 
 //import libraries
 const axios = require("axios").default;
+import Calendar from "tui-calendar"; /* ES6 */
+import "tui-calendar/dist/tui-calendar.css";
 
-const param = document.URL.split("?")[1];
-
-const requestPaqueteURL = `https://cors-anywhere.herokuapp.com/https://administrador.turismocardoza.cl/`;
-
-let data;
-
-Axios.get(requestPaqueteURL).then(res =>{
-    if(res.data.length > 0){
-        data = res.data;
-    } else {
-        data = {
-            error: "No hay Paquetes!"
-        };
-    }
-
-    console.log(data);
-})
-.catch(err =>{
-    alert(err);
-});
-
-var calendar = new Calendar("#calendario-container", {
+const cal = new Calendar("#calendar", {
     defaultView: "month",
     disableClick: true,
-	template: {
-		monthDayname: function (dayname) {
-			return (
-				'<span class="calendar-week-dayname-name" >' + dayname.label + "</span>"
-			);
-		},
-    },
-    
-    
+    disableDblClick: true,
 });
 
-calendar.setOptions({month: {visibleWeeksCount: 4}});
+const APIServer = `https://administrador.turismocardoza.cl/`;
 
-calendar.createSchedules([
-	{
-		id: "1",
-		calendarId: "1",
-		title: "my schedule",
-		category: "time",
-		dueDateClass: "",
-		start: "2020-10-18T22:30:00+09:00",
-		end: "2020-10-19T02:30:00+09:00",
-	},
-]);
+axios
+	.get(APIServer)
+	.then((res) => {
+		let data;
+		if (res.data.length > 0) {
+			data = res.data;
+			RenderCalendarEvents(data);
+		}
+	})
+	.catch((err) => {
+		alert(err);
+	});
+
+function RenderCalendarEvents(Paquetes) {
+	let ListaDeEventos = new Array;
+	Paquetes.forEach((p) => {
+        console.log(p);
+		const newEvent = {
+            id: 'p._id',
+            calendarId: '1',
+            title: p.nombre,
+            category: 'time',
+            dueDateClass: '',
+            start: String(p.fechaSalida).split('T')[0] + 'T11:00:00.000Z',
+            end: String(p.fechaLlegada).split('T')[0] + 'T11:00:00.000Z'
+        };
+        ListaDeEventos.push(newEvent);
+    });
+
+    cal.createSchedules(ListaDeEventos);
+}

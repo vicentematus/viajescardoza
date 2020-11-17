@@ -49,7 +49,7 @@ module.exports = {
     },
     plugins:[
         new MiniCSS({
-            filename: 'style.css'
+            filename: '[name].css'
         }),
         new HTMLWebpackPlugin({
             chunks: ['home'],

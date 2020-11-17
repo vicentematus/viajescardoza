@@ -7,9 +7,6 @@ const axios = require("axios").default;
 const APIServer = "https://administrador.turismocardoza.cl/";
 
 let data;
-let paquetes,
-	ofertas,
-	favorite = new Array();
 
 axios
 	.get(APIServer)
@@ -45,25 +42,40 @@ axios
 
 function GenerateLists(infoPaquetes) {
 	infoPaquetes.forEach((paquete, index) => {
-		if (paquete.favorito) {
+		/* if (paquete.favorito) {
 			GenerateFavorite(paquete);
 		}
 
 		if (paquete.oferta) {
 			GenerateOferta(paquete);
 		}
-
+ */
 		GeneratePaquete(paquete);
 	});
 }
 
-function GenerateFavorite(paquete) {
-    let paqueteHTML = document.createElement("section");
-	paqueteHTML.classList.add("paquetes__card");
-	paqueteHTML.innerHTML = `<div class="max-w-xl w-full h-full p-2">
+/* function GenerateFavorite(paquete) {
+	let paqueteHTML = document.createElement("div");
+	paqueteHTML.classList.add("max-w","xl", "w-full", "h-full", "p-2");
+	paqueteHTML.innerHTML = `
     <div
       style="
-        background-image: url(${APIServer}${String(paquete.img).split("public/")[1]});
+        background-repeat: no-repeat;
+        background-size: cover;
+      "
+      class="text-white py-10 px-5"
+    >
+      <div
+        class="ml-6 bg-yellow-300 inline-block py-2 px-8 rounded-md -mb-8"
+      >
+        <h2 class="text-black">Destino del mes: ${paquete.subcat}</h2>
+      </div>
+      <div
+        class="bg-white text-black max-w-xs rounded-lg shadow-md"
+      >
+      <div
+      style="
+        background-image: url('${APIServer}${String(paquete.imgBanner).split("public/")[1]}');
         background-repeat: no-repeat;
         background-size: cover;
       "
@@ -77,9 +89,9 @@ function GenerateFavorite(paquete) {
       <div
         class="bg-white text-black max-w-xs rounded-lg py-2 px-10 shadow-md"
       >
-        <h3 class="uppercase font-bold text-4xl leading-none">${paquete.nombre}</h3>
+        <h3 class="uppercase font-bold text-4xl leading-none">Cuba</h3>
         <p>Desde:</p>
-        <p class="font-bold text-3xl mt-1 leading-none">${paquete.precio}</p>
+        <p class="font-bold text-3xl mt-1 leading-none">$299.990</p>
         <a class="inline-block mt-2" href="/paquete.html?${paquete._id}">
           <div
             class="bg-green-500 py-2 px-4 text-white font-medium text-lg inline-flex items-center rounded-lg hover:bg-green-400"
@@ -103,20 +115,35 @@ function GenerateFavorite(paquete) {
         </a>
       </div>
     </div>
-  </div>`;
+      </div>
+    </div>
+`;
 
-	document
-		.querySelector("#favoritos")
-		.appendChild(paqueteHTML);
+	document.querySelector("#favoritos").appendChild(paqueteHTML);
 }
 
 function GenerateOferta(paquete) {
-	let paqueteHTML = document.createElement("section");
-	paqueteHTML.classList.add("paquetes__card");
-	paqueteHTML.innerHTML = `<div class="max-w-xl w-full h-full p-2">
+	let paqueteHTML = document.createElement("div");
+	paqueteHTML.classList.add("max-w","xl", "w-full", "h-full", "p-2");T
+	paqueteHTML.innerHTML = `
     <div
       style="
-        background-image: url(${APIServer}${String(paquete.img).split("public/")[1]});
+        background-repeat: no-repeat;
+        background-size: cover;
+      "
+      class="text-white py-10 px-5"
+    >
+      <div
+        class="ml-6 bg-yellow-300 inline-block py-2 px-8 rounded-md -mb-8"
+      >
+        <h2 class="text-black">Destino del mes: ${paquete.subcat}</h2>
+      </div>
+      <div
+        class="bg-white text-black max-w-xs rounded-lg shadow-md"
+      >
+      <div
+      style="
+        background-image: url('${APIServer}${String(paquete.imgBanner).split("public/")[1]}');
         background-repeat: no-repeat;
         background-size: cover;
       "
@@ -130,9 +157,9 @@ function GenerateOferta(paquete) {
       <div
         class="bg-white text-black max-w-xs rounded-lg py-2 px-10 shadow-md"
       >
-        <h3 class="uppercase font-bold text-4xl leading-none">${paquete.nombre}</h3>
+        <h3 class="uppercase font-bold text-4xl leading-none">Cuba</h3>
         <p>Desde:</p>
-        <p class="font-bold text-3xl mt-1 leading-none">${paquete.precio}</p>
+        <p class="font-bold text-3xl mt-1 leading-none">$299.990</p>
         <a class="inline-block mt-2" href="/paquete.html?${paquete._id}">
           <div
             class="bg-green-500 py-2 px-4 text-white font-medium text-lg inline-flex items-center rounded-lg hover:bg-green-400"
@@ -156,13 +183,13 @@ function GenerateOferta(paquete) {
         </a>
       </div>
     </div>
-  </div>`;
+      </div>
+    </div>
+`;
 
-	document
-		.querySelector("#ofertas")
-		.appendChild(paqueteHTML);
+	document.querySelector("#ofertas").appendChild(paqueteHTML);
 }
-
+ */
 function GeneratePaquete(paquete) {
 	let paqueteHTML = document.createElement("section");
 	paqueteHTML.classList.add("paquetes__card");

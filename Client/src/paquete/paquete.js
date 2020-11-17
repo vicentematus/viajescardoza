@@ -114,26 +114,26 @@
 
 //import assets
 
+import('../styles.css')
+
 //import libraries
 const axios = require("axios").default;
 
-const param = document.URL.split("?")[1];
+const param = String(document.URL).split('?')[1];
 
-const requestPaqueteURL = `https://cors-anywhere.herokuapp.com/https://administrador.turismocardoza.cl/paquete/${param}`;
 
-let data;
+const APIServer = "https://administrador.turismocardoza.cl/paquete/";
 
-axios.get(requestPaqueteURL).then((res) => {
-	if (!res.data.nombre) {
-		console.log("Paquete no encontrado!");
-		document.location.href = document.location.origin;
-	}
+
+axios.get(APIServer + param).then((res) => {
+
+  console.log(res);
 
 	let infoPaqueteHTML = document.createElement("div");
 	infoPaqueteHTML.innerHTML = `
 
   <img
-  src=""
+  src="${APIServer.split('.cl')[0]}.cl/${res.data.imgBanner.split('public/')[1]}"
   alt=""
   style="height: 50vh"
   class="w-full object-cover object-center"
@@ -147,7 +147,7 @@ axios.get(requestPaqueteURL).then((res) => {
     <p class="mt-2">desde</p>
     <p class="paquetes__precio">${res.data.precio}</p>
     <div class="flex justify-center">
-      <a href="${res.data.linkPago}" class="flex">
+      <a href="http://${res.data.linkPago}" class="flex">
         <div class="cta__paquetes">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -171,7 +171,10 @@ axios.get(requestPaqueteURL).then((res) => {
 </div>
 <div class="p-4 max-w-2xl mx-auto">
   <p class="mt-2">
-  ${new Intl.DateTimeFormat('en-GB').format(new Date(res.data.fecha))} , ${res.data.duracion} noches
+  Fecha de Salida: ${res.data.fechaSalida.split('T')[0]}
+  </p>  
+  <p class="mt-2">
+  Fecha de Llegada: ${res.data.fechaLlegada.split('T')[0]}
   </p>  
   <p class="mt-2">
   ${res.data.categoria} , ${res.data.subcat}
