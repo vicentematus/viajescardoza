@@ -108,7 +108,7 @@ router.put('/:idPaquete/oferta', (req, res) =>{
             })
         } else {
 
-            await Paquete.updateOne({_id:paqueteInfo._id}, {$set: {oferta: !paqueteInfo.oferta}} )
+            await Paquete.updateOne({_id:paqueteInfo._id}, {oferta: !paqueteInfo.oferta} )
             .then(infoActualizada =>{
                 res.redirect('/admin/home');
             });
@@ -129,7 +129,7 @@ router.put('/:idPaquete/favorito', async (req, res) =>{
                 console.log(paqueteInfo._id);
             }
 
-            await Paquete.updateOne({_id:paqueteInfo._id}, {$set: {favorito: !paqueteInfo.favorito}})
+            await Paquete.updateOne({_id:paqueteInfo._id}, {favorito: !paqueteInfo.favorito})
             .then(infoActualizada =>{
                 res.redirect('/admin/home');
             });
