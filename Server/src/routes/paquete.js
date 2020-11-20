@@ -100,32 +100,34 @@ router.delete('/:idPaquete', (req, res) =>{
 
 //Ofertas y favorito
 router.put('/:idPaquete/oferta', (req, res) =>{
-    Paquete.findById(req.params.idPaquete, (err, paqueteInfo) =>{
 
-        const changeOfertaState = {
-            oferta: !paqueteInfo.oferta,
+    Paquete.findById(req.params.idPaquete, async (err, paqueteInfo) =>{
+        if(err){
+            res.json({
+                err: err
+            })
+        } else {
+
+            await Paquete.findOneAndUpdate({_id:paqueteInfo._id}, {oferta: !paqueteInfo.oferta})
+            .then(infoActualizada =>{
+                res.redirect('/admin/home');
+            });
         }
-    
-        Paquete.findOneAndUpdate(req.params.idPaquete, changeOfertaState)
-        .then(infoActualizada =>{
-            console.log(infoActualizada);
-            res.redirect('/admin/home');
-        });
     });
 });
 
 router.put('/:idPaquete/favorito', (req, res) =>{
-    Paquete.findById(req.params.idPaquete, (err, paqueteInfo) =>{
-
-        const changeFavoritoState = {
-            favorito: !paqueteInfo.favorito,
+    Paquete.findById(req.params.idPaquete, async (err, paqueteInfo) =>{
+        if(err){
+            res.json({
+                err: err
+            })
+        } else {
+            await Paquete.findOneAndUpdate({_id:paqueteInfo._id}, {favorito: !paqueteInfo.favorito})
+            .then(infoActualizada =>{
+                res.redirect('/admin/home');
+            });
         }
-    
-        Paquete.findOneAndUpdate(req.params.idPaquete, changeFavoritoState)
-        .then(infoActualizada =>{
-            console.log(infoActualizada);
-            res.redirect('/admin/home');
-        });
     });
 });
 

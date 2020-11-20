@@ -29,7 +29,7 @@ app.use(express.static('./src/public'));
 
 
 //Base de Datos
-mongoose.connect('mongodb://localhost:27017/ViajesCardoza', {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('mongodb://localhost:27017/ViajesCardoza', {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
         .then(db => console.log('DB is connected'))
         .catch(err => console.log(err))
 

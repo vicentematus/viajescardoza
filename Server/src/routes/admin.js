@@ -12,19 +12,19 @@ router.get("/login", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-	console.log(req.body);
 	//AQUI VIENE LA MAGIA DEL LOGIN (Por ahora cualquier usuario y contraseña funcionan)
 	res.redirect("home");
 });
 
 router.get("/home", async (req, res) => {
-	const paqs = await Paquete.find((err) => {
+	await Paquete.find(err => {
 		if (err) {
 			res.send(err);
 		}
+		
+	}).then(paquetes => {
+		res.render("admin/home", { paquetes: paquetes });
 	});
-
-	res.render("admin/home", { paquetes: paqs });
 });
 
 
