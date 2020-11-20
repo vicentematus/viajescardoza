@@ -79,7 +79,7 @@ router.put('/:idPaquete', (req, res) =>{
 
     }
 
-    Paquete.findOneAndUpdate(req.params.idPaquete, newInfo)
+    Paquete.updateOne({_id:req.params.idPaquete}, newInfo)
     .then(infoActualizada =>{
         console.log(infoActualizada);
         res.redirect('/admin/home');
@@ -108,7 +108,7 @@ router.put('/:idPaquete/oferta', (req, res) =>{
             })
         } else {
 
-            await Paquete.findOneAndUpdate({_id:paqueteInfo._id}, {$set: {oferta: !paqueteInfo.oferta}} )
+            await Paquete.updateOne({_id:paqueteInfo._id}, {$set: {oferta: !paqueteInfo.oferta}} )
             .then(infoActualizada =>{
                 res.redirect('/admin/home');
             });
@@ -123,7 +123,13 @@ router.put('/:idPaquete/favorito', async (req, res) =>{
                 err: err
             })
         } else {
-            await Paquete.findOneAndUpdate({_id:paqueteInfo._id}, {$set: {favorito: !paqueteInfo.favorito}})
+
+            if (req.params.idPaquete == paqueteInfo._id){
+                console.log(req.params.idPaquete);
+                console.log(paqueteInfo._id);
+            }
+
+            await Paquete.updateOne({_id:paqueteInfo._id}, {$set: {favorito: !paqueteInfo.favorito}})
             .then(infoActualizada =>{
                 res.redirect('/admin/home');
             });
@@ -137,7 +143,7 @@ router.put('/:idPaquete/newThumbnail', upload.single('img'), (req, res) =>{
     const newImgs = {
         img: req.file.path,
       }  
-    Paquete.findByIdAndUpdate(req.params.idPaquete, newImgs).then(newInfo =>{
+    Paquete.updateOne({_id:req.params.idPaquete}, newImgs).then(newInfo =>{
         console.log(newInfo);
         res.redirect(`/admin/editar/paquete/${req.params.idPaquete}`)
     });
@@ -147,7 +153,7 @@ router.put('/:idPaquete/newBanner', upload.single('imgBanner'), (req, res) =>{
     const newImgs = {
         imgBanner: req.file.path,
       }  
-    Paquete.findByIdAndUpdate(req.params.idPaquete, newImgs).then(newInfo =>{
+    Paquete.updateOne({_id:req.params.idPaquete}, newImgs).then(newInfo =>{
         console.log(newInfo);
         res.redirect(`/admin/editar/paquete/${req.params.idPaquete}`)
     });
