@@ -14,7 +14,7 @@ const paqueteRoutes = require('./routes/paquete');
 
 //App Config
 const app = express();
-const port = 80;
+const port = 3000;
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs');
