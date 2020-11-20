@@ -108,7 +108,7 @@ router.put('/:idPaquete/oferta', (req, res) =>{
             })
         } else {
 
-            await Paquete.findOneAndUpdate({_id:paqueteInfo._id}, {oferta: !paqueteInfo.oferta})
+            await Paquete.findOneAndUpdate({_id:paqueteInfo._id}, {$set: {oferta: !paqueteInfo.oferta}} )
             .then(infoActualizada =>{
                 res.redirect('/admin/home');
             });
@@ -116,14 +116,14 @@ router.put('/:idPaquete/oferta', (req, res) =>{
     });
 });
 
-router.put('/:idPaquete/favorito', (req, res) =>{
-    Paquete.findById(req.params.idPaquete, async (err, paqueteInfo) =>{
+router.put('/:idPaquete/favorito', async (req, res) =>{
+    await Paquete.findById(req.params.idPaquete, async (err, paqueteInfo) =>{
         if(err){
             res.json({
                 err: err
             })
         } else {
-            await Paquete.findOneAndUpdate({_id:paqueteInfo._id}, {favorito: !paqueteInfo.favorito})
+            await Paquete.findOneAndUpdate({_id:paqueteInfo._id}, {$set: {favorito: !paqueteInfo.favorito}})
             .then(infoActualizada =>{
                 res.redirect('/admin/home');
             });
